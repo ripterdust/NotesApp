@@ -191,7 +191,7 @@ formController = (a) => {
 	}else {
 		alert('Por favor, introduzca datos válidos');
 	}
-}
+};
 
 // Printing notes title on the nav
 getNotes(url);
