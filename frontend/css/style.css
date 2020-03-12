@@ -1,0 +1,373 @@
+/*Fonts*/
+@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+/*General settings*/
+*{
+	margin: 0;
+	padding: 0;
+	font-family: 'Montserrat', sans-serif;
+	scroll-behavior: smooth;
+	transition: .3s;
+}
+
+:root{
+	--black: #1a1a1a;
+	--green: #00a82d;
+	--whiteText: #dcdfe3;
+	--greyHover: #434b53;
+	--grey: #f8f8f8;
+	--red:#e74c3c;
+}
+
+a {
+	color: #000;
+	text-decoration: none;
+}
+
+.container{
+	width: 90%;
+	margin: auto;
+}
+
+body {
+	height: 100vh;
+	overflow: hidden;
+	
+}
+/*Main container*/
+.root{
+	width: 100%;
+	height: 100vh;
+	overflow: hidden;
+
+}
+/* Nav */
+
+.root .nav{
+	position: absolute;
+	background: var(--black);
+	height: 100vh;
+	width: 14%;
+	max-width: 14%;
+	display: grid;
+	grid-template-rows: 7vh 7vh auto 7vh;
+	padding: 10px 15px 0 10px; 
+	overflow-y: hidden;
+	overflow-x: hidden;
+	animation: leftanimation .5s ease-in;
+}
+@keyframes leftanimation{
+	0%{
+		left: -500px;
+	}
+	100%{
+		left: 0;
+	}
+}
+.root .nav .user {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: #fff;
+	letter-spacing: 4px;
+	transition: .2s;
+}
+.root .nav .user:hover{
+	cursor: pointer;
+}
+
+.root .nav .newBTN {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: #fff;
+	transition: .3s;
+	cursor: pointer;
+}
+.root .nav .newBTN:hover{
+	background: var(--greyHover);
+	transform: scale(1.1);
+}
+
+.root .nav .newBTN i{
+	background: var(--green);
+	margin-right: 1em;
+	font-size: 20px;
+	padding: .2em;
+	border-radius: 50%;
+	transition: .3s;
+}
+.root .nav .newBTN:hover i{
+	transform: rotate(360deg);
+}
+.root .nav .actions ul{
+	list-style-type: none;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	margin-top: 5vh;
+	overflow-x: hidden;
+	overflow-y: scroll;
+	height: 70vh;
+}
+.root .nav .actions ul li {
+	color: var(--whiteText);
+	width: 100%;
+	text-align: center;
+	padding: .7em 0;
+	text-transform: uppercase;
+	transition: .2s;
+	cursor: pointer;
+	
+}
+.root .nav .actions ul li:hover{
+	background: var(--greyHover);
+	transform: scale(1.1);
+}
+.root .nav .copy{
+	color: #fff;
+	text-align: center;
+	text-transform: capitalize;
+}
+
+/* Only new note */
+
+.root .note {
+	position: absolute;
+	background: #fff;
+	width: 84.6%;
+	height: 100vh;
+	right: 0;
+	transition: .3s;
+}
+
+.root .note .noteData {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	color: black;
+}
+.root .note .noteData .welcome{
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	text-transform: uppercase;
+	
+}
+.root .note .noteData .welcome p:nth-child(1){
+	font-size: 40px;
+	letter-spacing: 5px;
+	border-bottom: 1px solid rgba(0,0,0,.4);
+	padding-bottom: .1em;
+	transition: .3s;
+	
+}
+.root .note .noteData .welcome p:nth-child(1):hover {
+	letter-spacing: 10px;
+}
+
+.root .note .noteData .welcome p:nth-child(2){
+	margin-top: 1em;
+	color: var(--green);
+	letter-spacing: 4px;
+	transition: .3s;
+
+}
+.root .note .noteData .welcome p:nth-child(2):hover {
+	letter-spacing: 8px;
+}
+
+.root .note .noteData .noteMaximiseBTN{
+	position: absolute;
+	top: 20px;
+	left: 20px;
+	z-index: 1;
+}
+
+.root .note .noteData .noteMaximiseBTN i {
+	color: var(--greyHover);
+	cursor: pointer;
+	transition: .3s;
+}
+.root .note .noteData .noteMaximiseBTN i:hover{
+	transform: scale(1.2) rotate(360deg);
+}
+.root .note .noteData .noteContent{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	padding: 2em;
+}
+.root .note .noteData .noteContent .title {
+	color: black;
+	font-size: 30px;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	text-align: center;
+	border-bottom: 2px solid var(--grey);
+	padding-bottom: .7em;
+}
+.root .note .noteData .noteContent .container {
+	font-size: 20px;
+	margin-top: 20px;
+	display: flex;
+	justify-content: space-between;
+	text-align: justify;
+	flex-direction: column;
+	align-items: center;
+	overflow-x: hidden;
+	overflow-y: scroll;
+
+
+}
+.root .note .noteData .noteContent .container .btns {
+	display: flex;
+	justify-content: center;
+	padding: 1em 0;
+
+}
+.root .note .noteData .noteContent .container .btns button{
+	border: 1px solid var(--green);
+	background: transparent;
+	padding: 1em 0;
+	margin: 0 10px;
+	width: 150px;
+	font-size: 14px;
+	border-radius: 5px;
+	transition: .2s;
+	color: var(--green);
+	text-transform: uppercase;
+	letter-spacing: 2px;
+}
+
+.root .note .noteData .noteContent .btns button:hover{
+	background: var(--green);
+	color: #fff;
+	transform: scale(1.1);
+	letter-spacing: 0px;
+}
+.root .note .noteData .noteContent .container .date{
+	font-size: 15px;
+	display: flex;
+	flex-direction: column;
+	margin-top: 1em;
+	text-align: center;
+	color: rgba(0,0,0,.5);
+}
+
+/* Create note form*/
+.root .note .noteData form {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	left: 0;
+	top: 0;
+	padding: 2em;
+}
+.root .note .noteData form .title {
+	font-size: 30px;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	text-align: center;
+	border-bottom: 2px solid var(--grey);
+	padding-bottom: .7em;
+}
+
+.root .note .noteData form .form-content{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	margin-top: 2vh;
+}
+.root .note .noteData form .form-content .item:nth-child(1) {
+	width: 100%;
+	display: flex;
+	justify-content: space-around;
+	font-size: 20px;
+	margin-bottom: 5vh;
+}
+.root .note .noteData form .form-content .item:nth-child(1) .input {
+	width: 90%;
+	border: none;
+	border-bottom: 1px solid var(--grey);
+	padding: .3em;
+	font-size: 17px;
+}
+.root .note .noteData form .form-content .item:nth-child(2) {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 20px;
+	margin-bottom: 5vh;
+	flex-direction: column;
+}
+.root .note .noteData form .form-content .item:nth-child(2) textarea {
+	margin-top: 10px;
+	width: 100%;
+	border: 1px solid var(--grey);
+	padding: 1em;
+}
+.root .note .noteData form .form-content #formNote {
+	border: 2px solid var(--green);
+	background: transparent;
+	padding: 1em 0;
+	margin: 0 10px;
+	width: 200px;
+	font-size: 14px;
+	border-radius: 5px;
+	transition: .2s;
+	color: var(--green);
+	letter-spacing: 2px;
+	text-transform: uppercase;
+	text-align: center;
+	position: relative;
+}
+
+.root .note .noteData form .form-content #formNote:hover{
+	color: #fff;
+	transform: scale(1.1) rotate(-10deg);
+	letter-spacing: 0;
+	background: var(--green);
+}
+
+.root .note .noteData .message{
+	font-size: 30px;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	padding-bottom: .7em;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	flex-direction: column;
+}
+.root .note .noteData .message .text:nth-child(1){
+	border-bottom: 1px solid rgba(0,0,0,.4);
+
+
+}
+.root .note .noteData .message .text:nth-child(2){
+	font-size: 15px;
+	letter-spacing: 2px;
+	color: var(--green);
+	margin-top: 1em;
+}
+
+/*Edit modal*/
+
+
+
+
+
+
+
+
+
+

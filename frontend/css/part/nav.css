@@ -1,0 +1,64 @@
+.root .nav{
+	position: absolute;
+	background: var(--black);
+	height: 100vh;
+	width: 14%;
+	max-width: 14%;
+	display: grid;
+	grid-template-rows: 7vh 7vh auto 7vh;
+	padding: 10px 15px 0 10px; 
+	overflow-y: hidden;
+	overflow-x: hidden;
+
+}
+.root .nav .user {
+	display: flex;
+	justify-content: left;
+	align-items: center;
+	color: #fff;
+}
+.root .nav .user .photo{
+	width: 40px;
+	height: 40px;
+	background: var(--green);
+	margin-right: 10px;
+	border-radius: 50%;
+}
+
+.root .nav .newBTN {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: #fff;
+}
+.root .nav .newBTN:hover{
+	background: var(--greyHover);
+}
+
+.root .nav .newBTN i{
+	background: var(--green);
+	margin-right: 1em;
+	font-size: 20px;
+	padding: .2em;
+	border-radius: 50%;
+}
+.root .nav .actions ul{
+	list-style-type: none;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	flex-direction: column;
+	margin-top: 5vh;
+	overflow-x: hidden;
+	overflow-y: scroll;
+}
+.root .nav .actions ul li {
+	color: var(--whiteText);
+	width: 100%;
+	text-align: center;
+	padding: .7em 0;
+	
+}
+.root .nav .actions ul li:hover{
+	background: var(--greyHover);
+}
