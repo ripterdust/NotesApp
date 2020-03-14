@@ -314,6 +314,16 @@ body {
 	border: 1px solid var(--grey);
 	padding: 1em;
 }
+.root .note .noteData form .form-content .item:nth-child(2) #emoji {
+	color: var(--green);
+	opacity: .6;
+	font-size: 25px;
+	margin: 5px;
+	transition: .3s;
+}
+.root .note .noteData form .form-content .item:nth-child(2) #emoji:hover {
+	transform: scale(1.2);
+}
 .root .note .noteData form .form-content #formNote {
 	border: 2px solid var(--green);
 	background: transparent;
@@ -361,7 +371,9 @@ body {
 }
 
 /*Edit modal*/
-
+.modal {
+	
+}
 
 
 

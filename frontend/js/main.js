@@ -18,7 +18,7 @@ var user = document.querySelector('.user');
 user.addEventListener('click', () => {
 	getNotes(url);
 	document.querySelector('#note').innerHTML = `<div class="noteMaximiseBTN">
-					<i class="fas fa-expand-arrows-alt">Button</i>
+					<i class="fas fa-expand-arrows-alt"></i>
 				</div>
 				<div class="welcome">
 					<p>¿Qué quieres hacer?</p>
@@ -59,7 +59,7 @@ showNote = (x) => {
 			console.log(data.title)
 			noteData.innerHTML = `
 				<div class="noteMaximiseBTN">
-					<i class="fas fa-expand-arrows-alt">Button</i>
+					<i class="fas fa-expand-arrows-alt"></i>
 				</div>
 				<div class="noteContent">
 					<div class="title">
@@ -100,7 +100,7 @@ btn = (param) => {
 			} )
 			.catch( err => console.log(err) );
 		document.querySelector('#note').innerHTML = `<div class="noteMaximiseBTN">
-					<i class="fas fa-expand-arrows-alt">Button</i>
+					<i class="fas fa-expand-arrows-alt"></i>
 				</div>
 				<div class="welcome">
 					<p>Nota eliminada exitosamente</p>
@@ -121,7 +121,7 @@ btn = (param) => {
 			.catch( err => console.log(err) );
 		let noteData = document.querySelector('#note');
 		noteData.innerHTML += `<div class="noteMaximiseBTN">
-								<i class="fas fa-expand-arrows-alt">Button</i>
+								<i class="fas fa-expand-arrows-alt"></i>
 							  </div>`
 		btnFunction()
 	}
@@ -135,7 +135,7 @@ newNote = () => {
 	let noteData = document.querySelector('#note');
 	noteData.innerHTML = `
 		<div class="noteMaximiseBTN">
-			<i class="fas fa-expand-arrows-alt">Button</i>
+			<i class="fas fa-expand-arrows-alt"></i>
 		</div>
 		<form>
 			<div class="title">Crear una nueva nota</div>
@@ -144,13 +144,29 @@ newNote = () => {
 					Título: <input type="text" name="title" id="name" class="input" placeholder="Escriba aquí el título de su nota."/>
 				</div>
 				<div class="item">
+					<i class="fas fa-laugh" id="emoji"></i>
 					Contenido: <textarea name="content" cols="30" rows="10" class="input" id="content" placeholder="Escriba aquí el contenido de su nota."></textarea>
 				</div>
 				<input value="¡Crear nota!" onclick="formController(this)" id="formNote"/>
 			</div>
 		</form>
 	`
+
 	btnFunction()
+	// Emoji selection
+	var emojiBTN = document.querySelector('#emoji')
+	var input = document.querySelector('#content');
+	var picker = new EmojiButton({
+		position: 'auto'
+	})
+
+	picker.on('emoji', (emoji) => {
+		input.value += emoji
+	})
+
+	emojiBTN.addEventListener('click', () => {
+		picker.togglePicker(emojiBTN);
+	});
 
 
 }
@@ -195,4 +211,10 @@ formController = (a) => {
 
 // Printing notes title on the nav
 getNotes(url);
+
+
+
+
+
+
 
