@@ -7,8 +7,15 @@
 </head>
 <body>
 
-	<div class="modal">
-		
+	<div class="modalContainer hide" id="modal">
+		<div class="modal">
+			<div class="content" id="modalContent">
+			</div>
+			<div class="btns">
+				<button class="confirm" onclick="success('confirm')">Confirmar</button>
+				<button class="cancel" onclick="success('cancel')">Cancelar</button>
+			</div>
+		</div>
 	</div>
 
 	<div class="root">
@@ -44,7 +51,7 @@
 	</div>
 
 </body>
-<script src="https://kit.fontawesome.com/62c0cdcf73.js" crossorigin="anonymous"></script>
+<!-- <script src="https://kit.fontawesome.com/62c0cdcf73.js" crossorigin="anonymous"></script> -->
 <script src="js/emoji.js"></script>
 <script src="js/main.js"></script>
 </html>

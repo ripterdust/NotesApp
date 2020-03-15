@@ -73,8 +73,8 @@ showNote = (x) => {
 							<p>Última edición: ${data.updatedAt}</p>
 						</div>
 						<div class="btns">
-							<button class="${data._id}" onClick="btn('editar')" id="edit">Editar</button>
-							<button class="${data._id}" onClick="btn('eliminar')" id="delete">Eliminar</button>
+							<button class="${data._id}" onClick="show('editar')" id="edit">Editar</button>
+							<button class="${data._id}" onClick="show('eliminar')" id="delete">Eliminar</button>
 						</div>
 
 					</div>
@@ -90,8 +90,42 @@ showNote = (x) => {
 }
 
 // Btns on note function
-btn = (param) => {
-	if (param == 'eliminar') {
+show = (param) => {
+	console.log(param)
+	let modal = document.querySelector('#modal');
+	modal.classList.remove('hide');
+	
+	var contentModal = document.querySelector('#modalContent');
+	var id = document.querySelector('#edit').classList;
+	if (param == 'editar') {
+		fetch(url + id)
+			.then(res => res.json())
+			.then(data => {
+				contentModal.innerHTML = `
+					<p class="edit">Editar nota</p>
+					<div class="item">
+						Título: <input type="text" value="${data.title}"/>
+					</div>
+					<div class="item">
+						Contenido: <textarea name="" id="" cols="30" rows="10">${data.content}</textarea>
+					</div>
+				`;
+			})
+			.catch(err => {
+				contentModal.innerHTML = '<p class="text">Ha habido un error</p>';
+				console.log(err)
+			})
+		
+	}else{
+		contentModal.innerHTML = '<p class="text">¿Está seguro que quiere eliminar esta nota?</p>';
+	}
+}
+
+// Hide modal 
+success = (param) => {
+	let modal = document.querySelector('#modal');
+	modal.classList.add('hide');
+	if (param == 'confirm') {
 		let btn = document.querySelector('#delete');
 		fetch(url + btn.classList, {method: 'DELETE'})
 			.then( res => res.json() )
@@ -109,6 +143,11 @@ btn = (param) => {
 					</p>
 				</div>`;
 		btnFunction();
+	}
+}
+btn = (param) => {
+	if (param == 'eliminar') {
+		
 
 	}else if(param == 'editar'){
 		let btn = document.querySelector('#edit');
@@ -181,9 +220,9 @@ formController = (a) => {
 		console.log(JSON.stringify(data))
 		fetch(url, {
 			method: 'POST',
-			body: JSON.stringify(data),
+			body: data,
 			headers: {
-				'Content-Type': 'application/x-www-form-urlencoded'
+				'Accept': 'application/json'
 			},
 
 		})
@@ -194,7 +233,7 @@ formController = (a) => {
 				getNotes(url);
 			});
 		document.querySelector('#note').innerHTML = `<div class="noteMaximiseBTN">
-						<i class="fas fa-expand-arrows-alt">Button</i>
+						<i class="fas fa-expand-arrows-alt"></i>
 					</div>
 					<div class="welcome">
 						<p>¡Nota guardada exitosamente!</p>
