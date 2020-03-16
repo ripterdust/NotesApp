@@ -73,7 +73,6 @@ showNote = (x) => {
 							<p>Última edición: ${data.updatedAt}</p>
 						</div>
 						<div class="btns">
-							<button class="${data._id}" onClick="show('editar')" id="edit">Editar</button>
 							<button class="${data._id}" onClick="show('eliminar')" id="delete">Eliminar</button>
 						</div>
 
@@ -94,31 +93,9 @@ show = (param) => {
 	console.log(param)
 	let modal = document.querySelector('#modal');
 	modal.classList.remove('hide');
-	
 	var contentModal = document.querySelector('#modalContent');
-	var id = document.querySelector('#edit').classList;
-	if (param == 'editar') {
-		fetch(url + id)
-			.then(res => res.json())
-			.then(data => {
-				contentModal.innerHTML = `
-					<p class="edit">Editar nota</p>
-					<div class="item">
-						Título: <input type="text" value="${data.title}"/>
-					</div>
-					<div class="item">
-						Contenido: <textarea name="" id="" cols="30" rows="10">${data.content}</textarea>
-					</div>
-				`;
-			})
-			.catch(err => {
-				contentModal.innerHTML = '<p class="text">Ha habido un error</p>';
-				console.log(err)
-			})
-		
-	}else{
-		contentModal.innerHTML = '<p class="text">¿Está seguro que quiere eliminar esta nota?</p>';
-	}
+	contentModal.innerHTML = '<p class="text">¿Está seguro que quiere eliminar esta nota?</p>';
+
 }
 
 // Hide modal 
@@ -220,9 +197,9 @@ formController = (a) => {
 		console.log(JSON.stringify(data))
 		fetch(url, {
 			method: 'POST',
-			body: data,
+			body: JSON.stringify(data),
 			headers: {
-				'Accept': 'application/json'
+				'Content-type': 'application/json'
 			},
 
 		})
